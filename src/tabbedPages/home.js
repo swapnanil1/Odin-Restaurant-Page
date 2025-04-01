@@ -1,4 +1,4 @@
-function homepage() {
+export default function renderHomepage() {
   const content = document.getElementById("content");
   const headline = document.createElement("h2");
   headline.classList.add("headline");
@@ -15,4 +15,4 @@ function homepage() {
     "Welcome to a place where flavor comes alive! We pour our hearts into every dish, using the finest ingredients to create food that doesn't just taste good, but feels good too. Join us for an unforgettable dining experience in a warm and inviting atmosphere. You'll wonder why you didn't come sooner!";
   content.appendChild(description);
 }
-export default homepage;
+renderHomepage;

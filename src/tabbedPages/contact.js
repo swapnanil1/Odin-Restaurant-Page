@@ -1,4 +1,4 @@
-export default function contact() {
+export default function renderContact() {
   const content = document.getElementById("content");
 
   // Create main contact section

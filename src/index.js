@@ -24,3 +24,4 @@ document.getElementById("about").addEventListener("click", () => {
   clearContent();
   about();
 });
+homepage();

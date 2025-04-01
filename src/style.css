@@ -150,9 +150,27 @@ button {
   color: #f5f5f5;
   padding: 1rem;
 }
-#content .grid-container > * {
-  background-color: #333;
+#content .grid-container .grid-item {
+  background-color: #0000005a;
   color: #f5f5f5;
   padding: 1rem;
   border-radius: 8px;
+}
+#content .grid-container .grid-item:hover {
+  background-color: #000000a2;
+  transition: 0.15s;
+}
+#content .grid-container .grid-item img {
+  max-width: 25vb;
+  max-height: 25vh;
+}
+#content .grid-container .grid-item img:hover {
+  transition: 0.15s;
+  max-width: 30vb;
+  max-height: 30vh;
+}
+#content .grid-container .grid-item button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
 }

@@ -1,4 +1,4 @@
-export default function about() {
+export default function renderAbout() {
   const content = document.getElementById("content");
   const headline = document.createElement("h2");
   headline.classList.add("headline");
