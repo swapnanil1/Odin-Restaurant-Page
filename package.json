@@ -13,6 +13,6 @@
     "predev": "echo `STARTING SERVER`",
     "dev": "webpack serve",
     "postdev": "echo `SERVER WORKING`",
-    "deploy": "git checkout gh-pages && git merge main --no-edit && npm run build && git add dist -f && git commit --allow-empty -m \"Deployment commit\" && git subtree push --prefix dist origin gh-pages && git checkout main"
+    "deploy": "git checkout gh-pages && git merge main --no-edit --allow-unrelated-histories && npm run build && git add dist -f && git commit --allow-empty -m \"Deployment commit\" && git subtree push --prefix dist origin gh-pages && git checkout main"
   }
 }
