@@ -1,107 +1,133 @@
-import interior from "../images/interior.jpeg";
-import partner1 from "../images/partners/leafEat.jpeg";
-import partner2 from "../images/partners/swadDelights.jpeg";
-import partner3 from "../images/partners/bharatBhojan.jpeg";
-import partner4 from "../images/partners/prithviPantry.jpeg";
-const partnersArray = [partner1, partner2, partner3, partner4];
-import review1 from "../images/reviews/reviewMan.jpeg";
-import review2 from "../images/reviews/reviewWomen.jpeg";
-const reviewArray = [review1, review2];
-function provideName(i) {
-  if (i == 0) {
+import interiorImageSrc from "../images/interior.jpeg";
+import partner1LogoSrc from "../images/partners/leafEat.jpeg";
+import partner2LogoSrc from "../images/partners/swadDelights.jpeg";
+import partner3LogoSrc from "../images/partners/bharatBhojan.jpeg";
+import partner4LogoSrc from "../images/partners/prithviPantry.jpeg";
+const partnerLogoSources = [
+  partner1LogoSrc,
+  partner2LogoSrc,
+  partner3LogoSrc,
+  partner4LogoSrc,
+];
+
+import reviewManImageSrc from "../images/reviews/reviewMan.jpeg";
+import reviewWomanImageSrc from "../images/reviews/reviewWomen.jpeg";
+const reviewProfileImageSources = [reviewManImageSrc, reviewWomanImageSrc];
+
+function getReviewerNameByIndex(index) {
+  if (index === 0) {
     return "Swapnanil";
   }
-  if (i == 1) {
+  if (index === 1) {
     return "Ditipriya";
   }
+  return "Anonymous";
 }
-function provideComment(i) {
-  if (i == 0) {
+
+function getReviewCommentByIndex(index) {
+  if (index === 0) {
     return "Fresh incredible flavors! Everything we ordered was cooked to perfection and tasted unbelievably fresh. You can tell they use high-quality ingredients. A must-try!";
   }
-  if (i == 1) {
-    return "Wow! Seriously impressed with the food here. Every dish was perfectly seasoned and beautifully presented. The chicken biriyani was the best I've had in a long time. ";
+  if (index === 1) {
+    return "Wow! Seriously impressed with the food here. Every dish was perfectly seasoned and beautifully presented. The chicken biriyani was the best I've had in a long time.";
   }
+  return "No comment provided.";
 }
+
 export default function renderHomepage() {
-  const content = document.getElementById("content");
+  const contentContainer = document.getElementById("content");
+  contentContainer.innerHTML = "";
 
-  // render section 1
-  const section1 = document.createElement("section");
-  section1.classList.add("home-section-1");
-  const section1Image = document.createElement("img");
-  const section1Heading = document.createElement("h1");
-  const article = document.createElement("article");
-  section1Image.src = interior;
-  section1.appendChild(section1Image);
-  section1Heading.classList.add("heading");
-  section1Heading.textContent = `"Experience Culinary Delight at Odin Restaurant!"`;
-  section1.appendChild(section1Heading);
-  content.appendChild(section1);
+  const introSection = document.createElement("section");
+  introSection.classList.add("intro-section");
 
-  // render section 2
-  const section2 = document.createElement("section");
-  section2.classList.add("home-section-2");
-  const section2Heading = document.createElement("h3");
-  section2Heading.classList.add("heading");
-  section2Heading.textContent = "Our Partners";
-  section2.appendChild(section2Heading);
-  const partnersContainer = document.createElement("div");
-  partnersContainer.classList.add("partnersContainer");
-  partnersArray.forEach((partner) => {
-    const partnerslogo = document.createElement("img");
-    partnerslogo.src = partner;
-    partnersContainer.appendChild(partnerslogo);
+  const introImage = document.createElement("img");
+  introImage.src = interiorImageSrc;
+  introImage.alt = "Restaurant interior";
+  introSection.appendChild(introImage);
+
+  const introHeading = document.createElement("h1");
+  introHeading.classList.add("section-heading", "intro-heading-text");
+  introHeading.textContent = `"Experience Culinary Delight at Odin Restaurant!"`;
+  introSection.appendChild(introHeading);
+
+  contentContainer.appendChild(introSection);
+
+  const partnersSection = document.createElement("section");
+  partnersSection.classList.add("partners-section");
+
+  const partnersHeading = document.createElement("h3");
+  partnersHeading.classList.add("section-heading");
+  partnersHeading.textContent = "Our Partners";
+  partnersSection.appendChild(partnersHeading);
+
+  const partnersLogoContainer = document.createElement("div");
+  partnersLogoContainer.classList.add("partners-logo-container");
+
+  partnerLogoSources.forEach((logoSrc, index) => {
+    const partnerLogo = document.createElement("img");
+    partnerLogo.src = logoSrc;
+    partnerLogo.alt = `Partner logo ${index + 1}`;
+    partnersLogoContainer.appendChild(partnerLogo);
   });
-  section2.appendChild(partnersContainer);
-  content.appendChild(section2);
+  partnersSection.appendChild(partnersLogoContainer);
 
-  // render section 3
-  const section3 = document.createElement("section");
-  section3.classList.add("home-section-3");
-  const section3Heading = document.createElement("h3");
-  section3Heading.classList.add("heading");
-  section3Heading.textContent = "Reviews";
-  section3.appendChild(section3Heading);
-  const reviewsContainer = document.createElement("div");
-  reviewsContainer.classList.add("reviewsContainer");
-  const reviewsCounter = reviewArray.length;
-  for (let index = 0; index < reviewsCounter; index++) {
-    // creating 2 profileBox inside reviewcontainer for 2 people for now
-    const profileBox = document.createElement("article");
-    profileBox.classList.add("profileBox");
-    // each profilebox has a reviewBox and reviewData
-    const reviewBox = document.createElement("article");
-    reviewBox.classList.add("reviewBox");
-    const profileImage = document.createElement("img");
-    profileImage.src = reviewArray[index];
-    profileImage.classList.add("profileImage");
-    reviewBox.appendChild(profileImage);
-    const profileName = document.createElement("span");
-    profileName.classList.add("profileName");
-    profileName.textContent = provideName(index);
-    reviewBox.appendChild(profileName);
-    profileBox.appendChild(reviewBox);
-    const reviewData = document.createElement("article");
-    reviewData.classList.add("reviewData");
-    const reviewComment = document.createElement("span");
-    reviewComment.classList.add("reviewComment");
-    reviewComment.textContent = provideComment(index);
-    reviewData.appendChild(reviewComment);
-    const reviewStar = document.createElement("div");
-    reviewStar.classList.add("stars");
-    let starCount = 5;
-    while (true) {
-      if (starCount <= 0) break;
-      const star = document.createElement("span");
-      star.classList.add("fa", "fa-star", "checked");
-      reviewStar.appendChild(star);
-      starCount--;
+  contentContainer.appendChild(partnersSection);
+
+  const reviewsSection = document.createElement("section");
+  reviewsSection.classList.add("reviews-section");
+
+  const reviewsHeading = document.createElement("h3");
+  reviewsHeading.classList.add("section-heading");
+  reviewsHeading.textContent = "Reviews";
+  reviewsSection.appendChild(reviewsHeading);
+
+  const reviewsListContainer = document.createElement("div");
+  reviewsListContainer.classList.add("reviews-list-container");
+
+  for (let index = 0; index < reviewProfileImageSources.length; index++) {
+    const reviewCard = document.createElement("article");
+    reviewCard.classList.add("review-card");
+
+    const reviewerProfile = document.createElement("div");
+    reviewerProfile.classList.add("reviewer-profile");
+
+    const reviewerImage = document.createElement("img");
+    reviewerImage.src = reviewProfileImageSources[index];
+    reviewerImage.classList.add("reviewer-image");
+    reviewerImage.alt = `Reviewer ${getReviewerNameByIndex(index)}`;
+    reviewerProfile.appendChild(reviewerImage);
+
+    const reviewerName = document.createElement("span");
+    reviewerName.classList.add("reviewer-name");
+    reviewerName.textContent = getReviewerNameByIndex(index);
+    reviewerProfile.appendChild(reviewerName);
+
+    reviewCard.appendChild(reviewerProfile);
+
+    const reviewContent = document.createElement("div");
+    reviewContent.classList.add("review-content");
+
+    const reviewCommentText = document.createElement("span");
+    reviewCommentText.classList.add("review-comment");
+    reviewCommentText.textContent = getReviewCommentByIndex(index);
+    reviewContent.appendChild(reviewCommentText);
+
+    const starsContainer = document.createElement("div");
+    starsContainer.classList.add("stars-container");
+    const totalStars = 5;
+    for (let starNum = 0; starNum < totalStars; starNum++) {
+      const starIcon = document.createElement("span");
+      starIcon.classList.add("fa", "fa-star", "checked");
+      starsContainer.appendChild(starIcon);
     }
-    reviewData.appendChild(reviewStar);
-    profileBox.appendChild(reviewData);
-    reviewsContainer.appendChild(profileBox);
+    reviewContent.appendChild(starsContainer);
+
+    reviewCard.appendChild(reviewContent);
+
+    reviewsListContainer.appendChild(reviewCard);
   }
-  section3.appendChild(reviewsContainer);
-  content.appendChild(section3);
+  reviewsSection.appendChild(reviewsListContainer);
+
+  contentContainer.appendChild(reviewsSection);
 }
