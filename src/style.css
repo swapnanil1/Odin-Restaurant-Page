@@ -7,12 +7,11 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  font-family: Arial, sans-serif;
   font-size: larger;
 }
 
 header {
-  background: #333;
+  background: #262b2a;
   padding: 1rem;
 }
 
@@ -31,22 +30,47 @@ nav #logo {
 }
 
 #logo {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   background-image: url(./images/logo.jpeg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 50%;
+  border-radius: 10%;
 }
+/* Custom button styles */
 
 button {
+  color: white;
+  font-size: 25px;
+  border: none;
+  background: none;
+  font-weight: 600;
   padding: 0.5rem 1rem;
   cursor: pointer;
 }
+
+button::before {
+  margin-left: auto;
+}
+
+button::after,
+button::before {
+  content: "";
+  width: 0%;
+  height: 2px;
+  background: #f44336;
+  display: block;
+  transition: 0.5s;
+}
+
+button:hover::after,
+button:hover::before {
+  width: 100%;
+}
 #content {
   background: linear-gradient(rgba(60, 50, 40, 0.5), rgba(60, 50, 40, 0.5)),
-    url("images/background.jpeg");
+    url("images/background.jpg");
   min-height: calc(100vh - 4rem);
   background-size: cover;
   background-position: center;
@@ -106,8 +130,8 @@ button {
   padding: 2rem 1rem;
   max-width: 90vb;
   margin: 1rem auto;
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: rgba(27, 31, 30, 0.917);
+  color: #d3d3d3;
   border-radius: 8px;
 }
 
@@ -152,7 +176,8 @@ button {
   flex-direction: row;
   gap: 2rem;
   align-items: flex-start;
-  background-color: #fff;
+  background-color: rgba(27, 31, 30, 0.917);
+  color: #eeeeeec9;
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -180,7 +205,6 @@ button {
   font-weight: 600;
   font-size: 1.1em;
   text-align: center;
-  color: #333;
 }
 
 .review-content {
@@ -196,7 +220,6 @@ button {
   font-size: 0.75rem;
   font-weight: 400;
   font-style: italic;
-  color: #333;
   line-height: 1.4;
   text-align: left;
   width: 100%;
@@ -209,7 +232,9 @@ button {
 .stars-container .fa-star {
   margin: 0 1px;
 }
+
 /* Contact page styles */
+
 .contact-section {
   width: 100%;
   max-width: 800px;
@@ -232,7 +257,7 @@ button {
 
 .contact-item h3 {
   margin-bottom: 1rem;
-  color: #ffd700;
+  color: #f44336;
 }
 
 .contact-item p {
@@ -248,7 +273,7 @@ button {
 }
 
 .contact-form h3 {
-  color: #ffd700;
+  color: #f44336;
   margin-bottom: 1.5rem;
 }
 
@@ -272,7 +297,7 @@ button {
 }
 
 .submit-btn {
-  background: #ffd700;
+  background: #f44336;
   color: #333;
   padding: 0.8rem 2rem;
   border: none;
@@ -287,12 +312,12 @@ button {
 }
 
 /* Menu page styles */
+
 #content .grid-container {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(0, 0.8fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 2.5rem;
-  color: #f5f5f5;
   padding: 1rem;
 }
 #content .grid-container .grid-item {
@@ -315,7 +340,5 @@ button {
   max-height: 30vh;
 }
 #content .grid-container .grid-item button {
-  padding: 0.5rem 1rem;
-  cursor: pointer;
   margin-top: 0.5rem;
 }

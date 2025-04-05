@@ -6,12 +6,12 @@
 
 // const dishImagesPaths = dishImages.keys().map(dishImages);
 
-import img1 from "../images/dish1.jpeg";
-import img2 from "../images/dish2.jpeg";
-import img3 from "../images/dish3.jpeg";
-import img4 from "../images/dish4.jpeg";
-import img5 from "../images/dish5.jpeg";
-import img6 from "../images/dish6.jpeg";
+import img1 from "../images/dishes/dish1.jpeg";
+import img2 from "../images/dishes/dish2.jpeg";
+import img3 from "../images/dishes/dish3.jpeg";
+import img4 from "../images/dishes/dish4.jpeg";
+import img5 from "../images/dishes/dish5.jpeg";
+import img6 from "../images/dishes/dish6.jpeg";
 
 const dishImagesPaths = [img1, img2, img3, img4, img5, img6];
 
